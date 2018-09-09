@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{background: black;
+			position: relative;
+			padding-top:100px;}			
+			#dian{height: 50px;
+			width:150px;
+			background: #00BFFF;
+			text-align: center;
+			line-height: 50px;
+			color:white;
+			display: block;
+			margin:0 auto;
+			font-size:30px;
+			opacity: 0.9;
+			border:2px solid white;
+			}
+			input{padding-left:150px;
+				display: block;
+				height: 100px;
+				background-color: black;
+				font-size:100px;
+				color:white;
+				text-align: left;
+				line-height: 100px;
+				margin-left:400px;
+				margin-bottom:100px;
+				margin-top:150px;
+				border-radius: 10px;
+				outline:none;
+				border:none;
+				font-weight: bolder;	
+			}
+			dt{height:50px;
+			width:400px;
+			color:white;
+			font-size:50px;
+			line-height: 50px;
+			margin-left:350px;}
+			img{width:500px;
+			height:500px;	
+			opacity: 0.8;		
+			}
+			dd{height: 20px;
+			width:260px;
+			margin-top:50px;
+			margin-left:837px;
+			font-size:20px;
+			line-height: 20px;
+			background: black;
+			color:white;
+			}
+			dl{width:300px;
+			height: 300px;
+			border-radius: 50%;
+			overflow: hidden;
+			position: absolute;
+			top:100px;
+			left:943px;
+			
+			}
+		</style>
+	</head>
+	<body>
+			<dt></dt>
+			<input  autocomplete="off" type="text" id="inp" value="" />
+			<dl><img src="" alt="" /></dl>
+			<div href="" id="dian" >开始</div>
+			<dd>当前共有位学生进入18课堂</dd>
+		
+		<script type="text/javascript">
+			var arr = ['鲍俊敏','蔡卓钦','曾俊鸣','陈鸿','陈敏','陈赛',
+						'邓睿鹏','丁龙坤','杜超','杜翕之','彭龙','郑佳琪',
+						'管易玲','郭志勇','郎婷','蒋雯','任建利','周陈金'];
+			var $dian = document.querySelector('#dian');
+			var $inp = document.querySelector('#inp');
+			var $img = document.getElementsByTagName('img');
+			var $dt = document.querySelector('dt');
+			var $dl = document.querySelector('dl');
+			var flag=true;
+			var interId;
+			$inp.value = '即将开始随机点名';	
+			function randName(){
+			var code = Math.floor(Math.random() * 18);
+			$inp.value = arr[code];
+			$img[0].src="img/"+code+".jpg";
+			}
+			$dian.onclick=function(){
+				$dl.style.border='1px solid blueviolet';
+				flag=!flag;
+				if(flag){
+					$dian.innerHTML="";
+					$dt.innerHTML="";
+					var $text = document.createTextNode("继续滚动");
+					var $textDt = document.createTextNode("别看就是你了");
+					$dian.appendChild($text);
+					$dt.appendChild($textDt);
+					clearInterval(interId);
+				}
+				else{
+					$dian.innerHTML="";
+					$dt.innerHTML="";
+					var $text = document.createTextNode("暂停");
+					var $textDt = document.createTextNode("正在随机筛选......");
+					$dian.appendChild($text);
+					$dt.appendChild($textDt);
+					interId = setInterval("randName()",100);
+					
+				}			
+			}	
+			
+		</script>
+	</body>
+</html>
