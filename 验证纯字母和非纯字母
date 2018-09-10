@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var str1 = 'aaaabbbccc';
+		var str = 'aa1122vbbf';
+		/*for(var i=0;i<str1.length;i++){
+			var a = str1.charCodeAt(i);
+			if(a<65||a>122){
+				console.log('非纯字母');
+				break;
+			}	
+			if(i==str1.length-1){
+			console.log('纯字母');
+			}	
+		}*/
+		for(var j=0;j<str1.length;j++){
+			var a=str1.charAt(j);
+			var b =str1.toUpperCase().charAt(j);
+			if(a==b){
+				console.log('非纯字母');
+				break;
+			}
+			if(j==str1.length-1){
+				console.log('纯字符串');
+			}
+		}
+		
+		
+	</script>
+</body>
+</html>
