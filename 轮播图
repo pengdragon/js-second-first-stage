@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<style>
+		#box,ul,ol,li{padding:0;margin:0;}
+		li{list-style: none;}
+		#box{
+			width:670px;
+			height:240px;
+			position: relative;
+			}
+		ul{position: relative;}
+		ul li{position: absolute;
+		top:0;
+		left:0;
+		}
+		ol{width:190px;
+		position: absolute;
+		right:0;
+		bottom: 10px;
+		}
+		ol li{margin-left:10px;
+		float:left;
+		background: white;
+		height: 20px;
+		width:20px;
+		border-radius: 50%;
+		text-align: center;
+		line-height: 20px;
+		}
+		.current{
+			background: pink;
+			color: white;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul id="uu_box">
+			<li style="z-index: 6;"><img src="img/img/1.jpg" alt="" /></li>
+			<li><img src="img/img/2.jpg" alt="" /></li>
+			<li><img src="img/img/3.jpg" alt="" /></li>
+			<li><img src="img/img/4.jpg" alt="" /></li>
+			<li><img src="img/img/5.jpg" alt="" /></li>
+			<li><img src="img/img/6.jpg" alt="" /></li>
+		</ul>
+		<ol id='ou_box' style="z-index: 10;">
+			<li class="current">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+		</ol>
+	</div>
+	<script type="text/javascript">
+		var box = (function(){
+			var timeer;
+			function $byId(ele){
+				return document.getElementById(ele);
+			}
+			var $uu_box = $byId("uu_box");
+			var $ou_box = $byId('ou_box')
+			function $bySelector(element,ele){
+				return element.querySelectorAll(ele);
+			}
+			var $uu_minBox = $bySelector($uu_box,'li');
+			var $ou_minBox = $bySelector($ou_box,'li');
+			return {	
+				init:function(){
+					this.event();
+					this.autoPlay();
+				},
+				event:function(){
+					var _this = this;
+					$ou_box.onclick = function(en){
+						en = en ||window.event;
+						var target = en.target||en.srcElement;
+						if(target.nodeName=='LI')
+						_this.showImages(target.innerHTML-1);
+					}	
+				},
+				showImages:function(index){	
+					for(var i=0;i<$uu_minBox.length;i++){
+						$uu_minBox[i].style.display="none";
+						$ou_minBox[i].className="";
+					}	
+					$ou_minBox[index].className='current';
+					$uu_minBox[index].style.display="block";
+				},
+				autoPlay:function(index){
+					var _this = this;
+					index=index||0;					
+					timeer = setInterval(function(){
+						index++;
+						if(index>$uu_minBox.length-1)
+						index=0;
+						_this.showImages(index);	
+					},2000);
+				}
+			}
+		}());	
+		box.init();
+	</script>
+</body>
+</html>
+
+<!--<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;}
+        ul,ol{ list-style: none;}
+        .wrapper{
+            width: 670px;
+            height: 240px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        ul{
+        	position:relative;
+        }
+        ul li{
+        	position:absolute;
+        	top:0;
+        	left:0;
+        }
+        ol{
+            position: absolute;
+            right: 0;
+            bottom: 10px;
+            width: 190px;
+        }
+        ol li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin: 0 5px;
+            text-align: center;
+            border-radius: 50%;
+            cursor: default;
+            background-color: #fff;
+        }
+        ol li.current{
+            background-color: pink;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <ul id="box">
+            <li style="z-index: 1;"><img src="img/img/1.jpg" alt=""/></li>
+            <li style="z-index: 1;"><img src="img/img/2.jpg" alt=""/></li>
+            <li style="z-index: 1;"><img src="img/img/3.jpg" alt=""/></li>
+            <li style="z-index: 1;"><img src="img/img/4.jpg" alt=""/></li>
+            <li style="z-index: 1;"><img src="img/img/5.jpg" alt=""/></li>
+            <li style="z-index: 1;"><img src="img/img/6.jpg" alt=""/></li>
+        </ul>
+        <ol style="z-index: 10;" id="uu">
+            <li class="current">1</li>
+            <li >2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ol>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+		var $img = document.getElementsByTagName('img');
+   var swiper = (function(){
+    //    获取dom元素
+    var $box = document.getElementById('box');
+    var $liBox = $box.querySelectorAll('li');
+    var $uuBox = document.getElementById('uu');
+    var $uuLiBox= $uuBox.querySelectorAll('li');
+    return {
+        // 初始化函数
+        init: function() {
+            this.event();
+            this.autoPlay();
+        },
+        // 存放事件处理程序
+        event: function() {
+            var _this = this;
+            $uuBox.onclick = function(e) {
+                e = e || window.event;
+                var target = e.target || e.srcElement;
+                console.log(target);
+                if(target.nodeName == 'LI') {
+                    _this.showImage(target.innerHTML - 1);
+                }
+
+            }
+        },
+        showImage: function(index) {
+            // index参数为索引： 点击元素的索引
+            for(var i = 0; i < $uuLiBox.length; i++) {
+                // 让所有的小圆点都清除class
+                $uuLiBox[i].className = '';
+                $liBox[i].style.display = 'none';
+            }
+            // 点击的元素添加class样式
+            $uuLiBox[index].className = 'current';
+            $liBox[index].style.display = 'block';
+        },
+        autoPlay: function(index) {
+            index = index || 0;
+            var _this = this
+            setInterval(function(){
+                index++;
+                if(index>5)
+                index=0;
+                _this.showImage(index);
+            }, 2000)
+        }
+
+
+    }
+    // var timer = null;
+   }())
+   swiper.init();
+</script>	 -->
