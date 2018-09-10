@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div">
+		<img src="img/0.png" />
+		<img src="img/8.png" />
+		时
+		<img src="img/1.png" />
+		<img src="img/5.png" />
+		分
+		<img src="img/0.png" />
+		<img src="img/9.png" />
+		秒
+	</div>
+	<script type="text/javascript">
+		
+		var $img = document.getElementsByTagName("img");
+		 $time();
+		 setInterval($time,1000);	
+		function $time(){
+			var date = new Date();
+		var _hours = date.getHours();
+		var _minutes = date.getMinutes();
+		var _second = date.getSeconds();
+		var str =''+fn(_hours)+fn(_minutes)+fn(_second);
+		for(var i=0;i<6;i++){
+			$img[i].src='img/'+str.charAt(i)+'.png';
+		}
+		}
+		
+		function fn(num){
+			if(num<10){
+				return '0'+num;
+			}
+			else{
+				return num;
+			}
+		}		
+	</script>
+	</body>
+</html>
