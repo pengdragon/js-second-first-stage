@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{height: 200px;background: blue;width: 200px;display: flex;}
+			#min_box{height: 100px;width:100px;background: red;margin:auto;
+			color:white;font-size:50px;text-align: center;line-height: 100px;}
+		</style>
+	</head>
+	<body><div id="box">
+		<div id="min_box">开始</div>
+	</div>
+		<script type="text/javascript">
+			function $(ele){
+				return document.getElementById(ele);
+			}
+			var $box = $('box');
+			var $min_box = $box.firstElementChild;
+			function fn(){
+				$min_box.style.background="green";
+			}
+			var handle = {
+				addHandle:function(ele,type,event){//添加dom2级事件监听
+					if(ele.addEventListener)
+					ele.addEventListener(type,event);
+					else if(ele.attachEvent)
+					ele.attachEvent(type,event);
+					else{
+						ele['on'+type] = event;
+					}
+				},
+				removeHandle:function(ele,type,event){//dom2级事件监听取消
+					if(ele.removeEventListener)
+					ele.removeEventListener(type,event);
+					else if(ele.dettachEvent)
+					ele.dattachEvent(type,event);
+					else{
+						ele['on'+type] = null;
+					}
+				}
+			}
+				handle.addHandle($min_box,"click",fn);
+				handle.removeHandle($min_box,"click",fn);
+		</script>
+	</body>
+</html>
