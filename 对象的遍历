@@ -1,0 +1,11 @@
+ var obj = {
+            shop: ['牙刷', '毛巾', '杯子'],
+            res: ['KFC', '津味园', '兰州拉面']
+        }
+			  for(var i in obj){
+			  	console.log(i);
+			  	console.log(obj[i]);
+			  	for(var j=0;j<obj[i].length;j++){
+			  		console.log(obj[i][j]);
+			  	}
+			  }
