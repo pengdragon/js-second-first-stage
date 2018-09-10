@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/* 5. 编写一个函数，输入一个数字，返回对应位数的验证码
+    验证码要求：必须是数字和字母组合（至少有一位数字和至少有一位字母*/
+   			randonCode(5);	
+   			function randonCode($ele){//官方方法
+   				var num = '0123456789';
+   				var str ='';
+   				for(var i = 97;i<123;i++){
+   					str += String.fromCharCode(i);  					
+   				}
+   				str = str+str.toUpperCase();  				
+   				var code = num[Math.floor(Math.random()*num.length)];
+   				code += str[Math.floor(Math.random()*str.length)];
+   				str = str+str.toUpperCase()+num; 
+   				for(var j=2;j<$ele;j++){
+   					var _random = Math.floor(Math.random()*str.length);
+   					code+=str[_random];
+   				}
+   				console.log(code);
+   				console.log(sortArr(code.split('')));
+   			}
+   			function sortArr(a){
+   				arr = [];   				
+   				var length = a.length;
+   				for(var z=0;z<length;z++){
+   					var _random = Math.floor(Math.random()*a.length);
+   				arr.push(a[_random]);
+				a.splice(_random,1);
+   				}
+   				arr = arr.join('');
+   				return arr;
+   				
+   			}
+   			/*function fn(ele){//自己的方法
+   				var str = 'abcdefghijklmnopqrstuvwxyz0123456789';
+   				var str1 = '';
+   				var str2 = '';
+   				var count = 0;
+   				for(var i=0;i<ele;i++){
+   					var num = Math.round(Math.random()*35);  
+   					str1+=str.charAt(num);
+   					if(str.charCodeAt(num)>=65){
+   						count++;
+   					}
+   					if(i==ele-1){
+   						if(!isNaN(str1)){
+   							i--;
+   							str1 = str1.substr(0,ele-1);
+   							continue;
+   						}  	
+   						if(count==ele){
+   							i--;
+   							count--;
+   							str1 = str1.substr(0,ele-1);
+   							continue;
+   						}
+   						str2+=str1;
+   					}
+   					
+   					
+   				}
+   				console.log(str2);
+   			}
+   			fn(8);*/
+		</script>
+	</body>
+</html>
