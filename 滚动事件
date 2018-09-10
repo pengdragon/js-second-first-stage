@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .box {
+            /* position: relative; */
+            border: 10px solid #ccc;
+            width:  300px;
+            height: 300px;
+            padding: 50px;
+            margin: 30px;
+            /* overflow: auto; */
+        }
+        .mini-box {
+            width: 50px;
+            height: 50px;
+            background: red;
+        }
+        .mini {width:10px;
+        background: blue;
+            height: 2000px;
+        }
+    
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <div class="mini-box"></div>
+        <div class="mini"></div>
+    </div>
+    <script>
+        var $box = document.querySelector('.box');
+        var $miniBox = $box.firstElementChild;
+        // clientLeft, clientTop 边框边距
+        //console.log($box.clientTop);
+        // clientWidth，clientHeight 可视区域的尺寸
+        //console.log($box.clientWidth);
+        //console.log($box.clientHeight);
+        // // offsetWidth, offsetHeight 实际尺寸 (可视尺寸+ 边框)
+        //console.log($box.offsetWidth);
+        //console.log($box.offsetHeight);
+        // offsetTop，offsetLeft是相对于父级的距离
+        // 父级: 向上级元素查找，如果有定位，就默认为父级，如果没有默认body是父级
+        //console.log($miniBox.offsetTop);
+        //console.log($miniBox.offsetLeft);
+        // offsetParent: 获取父级
+       console.log($miniBox.offsetParent);
+        
+        // 滚动事件
+
+        $box.onscroll = function() {
+            // scrollTop：滚动距离
+            console.log($box.scrollTop);
+            // scrollHeight： 滚动高度($box的真实高度)
+            console.log($box.scrollHeight);
+        }
+           window.onscroll = function() {
+            // console.log(document.body.scrollTop);
+            console.log(document.documentElement.scrollTop);
+        }
+        
+
+
+    </script>
+</body>
+</html>
