@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<span>0</span>
+		<big>0</big>
+		<small>0</small>
+		<button id='start'>开始</button>
+		<button id='stop'>暂停</button>
+		<button id='clean'>清零</button>
+		<script type="text/javascript">
+			var millsec = 0;
+			var timeer;			
+			var $sec = document.getElementsByTagName('big');
+			var $min = $sec[0].previousElementSibling;
+			var $millsec = $sec[0].nextElementSibling;
+			/*var $min = document.getElementsByTagName('span');
+			var $sec = $min[0].nextElementSibling;
+			var $millsec = $sec.nextElementSibling;*/
+			function $(ele){
+				return document.getElementById(ele);
+			}
+			var $start = $('start');
+			var $stop = $('stop');
+			var $clean = $('clean');
+			$start.onclick = function(){
+				clearInterval(timeer);
+				timeer = setInterval(function(){
+				millsec+=10;
+				$millsec.innerHTML=millsec%1000;
+				$sec[0].innerHTML = Math.floor(millsec/1000%60);
+				$min.innerHTML = Math.floor(millsec/1000/60%60);
+				
+			},10)
+			}
+			$stop.onclick = function(){
+				clearInterval(timeer);
+			}
+			$clean.onclick = function(){
+				millsec=0;
+				$min.innerHTML='0';
+				$sec[0].innerHTML='0';
+				$millsec.innerHTML="0";
+			}
+			//编写一个计时器，有暂停、开始、清零功能。(样式参照秒表：显示分钟:秒 毫秒)
+			
+			/*var $inp = document.getElementById('inp');
+			var $start = document.getElementById('start');
+			var $zhan = document.getElementById('zhan');
+			var $clean = document.getElementById('clean');
+			var i = 0;
+			var flag=true;
+			var a;
+			var j=0;
+			var str="";
+			$inp.value ='00'+":"+"00";
+			$start.onclick=function(){
+				 a= setInterval('fn()',100);
+			}
+			$zhan.onclick=function(){
+				clearInterval(a);
+			}
+			$clean.onclick=function(){
+				i=0;
+				j=0
+				$inp.value='0'+j+":"+"0"+i;
+			}
+			function fn(){	
+				i++;	
+				if(i<10){					
+					 if(j<10){					
+					 str ='0'+j+":"+"0"+i;
+				}
+				else{
+					str =j+":"+'0'+i;
+				}	
+				}
+				else{
+					if(j<10){					
+					 str ='0'+j+":"+i;
+				}
+				else{
+					str =j+":"+i;
+				}	
+				}	
+				
+				
+				if(i>58){
+					j++;
+					i=0;
+				}
+				return $inp.value = str;
+			}*/
+		
+		</script>
+	</body>
+</html>
