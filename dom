@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+	<button>点击排序</button>
+	<table id="table" border="1" cellspacing="0" cellpadding="">
+	
+	</table>
+	<script>
+		
+        var arrObj = [{
+                "name": "周杰伦",
+                "age": "28",
+                "profession": "歌手",
+                "introduce": "周杰伦（Jay Chou），1979年1月18日出生于台湾省新北市，中国台湾流行乐男歌手、音乐人、演员、导演、编剧、监制、商人。"
+            },
+            {
+                "name": "布冯",
+                "age": "40",
+                "profession": "足球运动员",
+                "introduce": "吉安路易吉·布冯（Gianluigi Buffon），1978年1月28日出生于意大利卡拉拉，意大利职业足球运动员，司职门将，效力于意甲尤文图斯足球俱乐部。"
+            },
+            {
+                "name": "加内特",
+                "age": "42",
+                "profession": "篮球运动员",
+                "introduce": "凯文·加内特（Kevin Garnett），1976年5月19日出生在美国南卡罗来纳，前美国职业篮球运动员，司职大前锋/中锋，绰号狼王（森林狼时期）、KG（名字缩写）、The BIG TICKET、Da Kid。"
+            },
+            {
+                "name": "李青",
+                "age": "22",
+                "profession": "打野",
+                "introduce": "李青是一个近战战士型英雄，拥有很高的机动性和爆发力，单挑和小规模团战能力很强，同时李青也是非常优秀的打野英雄，非常擅长野区的遭遇战和Gank，是非常致命的英雄人物。"
+            },
+            {
+                "name": "巫妖王",
+                "age": "1000",
+                "profession": "boss",
+                "introduce": "巫妖王是魔兽世界设定中的一个职位，天灾军团的统领，并非专指某人，至今为止共有三代，初代耐奥祖、二代阿尔萨斯、三代伯瓦尔。"
+            }
+        ]
+            // 把数组对象的数据以表格的形式展现到页面中
+          
+           
+        var $tbody = document.createElement('tbody');
+        var $table = document.getElementById('table');
+        var $btn = document.querySelector('button');
+        $btn.onclick = function(){
+        	arrObj.sort(function(a,b){
+        		return a.age-b.age;
+        	});
+        	insertDate(arrObj);
+        }
+		insertDate(arrObj);
+		 
+		function insertDate(ele){
+			$tbody.innerHTML='';
+			var $frag = document.createDocumentFragment();
+			var $tr = document.createElement('tr');
+				for(var z in ele[0]){
+					var $td = document.createElement('td');
+					var $textNode = document.createTextNode(z);
+					$td.appendChild($textNode);
+					$tr.appendChild($td);
+					$frag.appendChild($tr);
+					$tbody.appendChild($frag);
+					$table.appendChild($tbody);
+					$tr.style.textAlign='center';
+				}
+			for(var i=0;i<ele.length;i++){
+				var $tr = document.createElement('tr');
+				for(var j in ele[i]){
+					var $td = document.createElement('td');
+					var $textNode = document.createTextNode(ele[i][j]);
+					$td.appendChild($textNode);
+					$tr.appendChild($td);					
+				}
+				$frag.appendChild($tr);
+				$tbody.appendChild($frag);
+				$table.appendChild($tbody);
+			}
+			
+		}
+       /* var arr =[];
+        for(var n in arrObj[0]){
+        	arr.push(n);
+        }
+        var bigarr = [];
+        var somllarr=[];
+        var somllarr2=[];
+        var somllarr3=[];
+        var somllarr4=[];
+        var somllarr5=[];
+        somllarr.push(arrObj[0].name);
+        somllarr.push(arrObj[0].age);
+        somllarr.push(arrObj[0].profession);
+        somllarr.push(arrObj[0].introduce);
+        
+        somllarr2.push(arrObj[1].name);
+        somllarr2.push(arrObj[1].age);
+        somllarr2.push(arrObj[1].profession);
+        somllarr2.push(arrObj[1].introduce);
+        
+        somllarr3.push(arrObj[2].name);
+        somllarr3.push(arrObj[2].age);
+        somllarr3.push(arrObj[2].profession);
+        somllarr3.push(arrObj[2].introduce);
+        
+        somllarr4.push(arrObj[3].name);
+        somllarr4.push(arrObj[3].age);
+        somllarr4.push(arrObj[3].profession);
+        somllarr4.push(arrObj[3].introduce);
+        
+        somllarr5.push(arrObj[4].name);
+        somllarr5.push(arrObj[4].age);
+        somllarr5.push(arrObj[4].profession);
+        somllarr5.push(arrObj[4].introduce);
+       bigarr.push(somllarr,somllarr2,somllarr3,somllarr4,somllarr5);
+            var $table = document.createElement('table');
+            $table.setAttribute('border','1');
+            $table.setAttribute('cellspacing','0');
+            var $body = document.querySelector('body');
+        	var $thead = document.createElement('thead');
+        	var $tbody = document.createElement('tbody');
+        	for(var i=0;i<6;i++){
+        		var $tr = document.createElement('tr');
+        		if(i==0){        			
+        			for(var j=0;j<4;j++){
+        				var $th= document.createElement('th');
+        				var $textNode = document.createTextNode(arr[j]);       				       		
+        				$th.appendChild($textNode);
+        				$tr.appendChild($th);
+        			}      			
+        			
+        		}
+        		else{
+        			for(var z=0;z<4;z++){
+        				var $th= document.createElement('td');
+        				var $textNode = document.createTextNode(bigarr[i-1][z]); 
+        				
+        				$th.appendChild($textNode);
+        				$tr.appendChild($th);
+        			}      			
+        			
+        		}
+        		$table.appendChild($tr);
+        		$body.appendChild($table);
+        	}*/
+    </script>
+
+</body>
+</html>
