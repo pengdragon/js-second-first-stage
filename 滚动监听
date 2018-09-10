@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{height:3000px;}
+			#box{color:blue;
+			background: orange;
+			width:70px;
+			position:fixed;
+			bottom: 0px;
+			right:0px;
+			display: none;
+			}
+		</style>
+	</head>
+	<body>我是顶部
+		<div id="box">回到顶部</div>
+		<script type="text/javascript">
+			var obj = (function(){
+				var $box = document.getElementById('box');
+				return {
+					event:function(){
+						document.documentElement.scrollTop=0;
+						$box.onclick = function(){	
+							var time = setInterval(function(){
+								var height = document.documentElement.scrollTop;
+								height-=20;
+								if(height<=0){
+									height==0;
+									clearInterval(time);
+								}
+								document.documentElement.scrollTop=height;
+							},20);
+						}
+						window.onscroll = function(){
+								if(document.documentElement.scrollTop>=200){
+									$box.style.display = 'block';
+								}
+								else{
+									$box.style.display = 'none';
+								}
+							}
+					}
+				}
+			}())
+			obj.event();
+		</script>
+	</body>
+</html>
