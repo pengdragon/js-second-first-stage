@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input placeholder="请输入QQ号";autofocus="autofocus"; type="text" id="QQ"  style="width:400px;height: 50px;background:#ccc;
+			border:50px dodgerblue;margin:100px auto;text-align: center;font-size:50px;
+			color:green;display: block;"/>
+			<button value="" style="height: 50px;color:blue;text-align: center;line-height: 50px;
+				font-size:50px;">登陆</button>
+				
+		<script type="text/javascript">
+			  /*1.	QQ号验证
+            1、有没有输入
+            2、输入的是不是数字
+            3、不能有0在前面
+            4、不能是小数
+            5、输入的数字必须在5位以上、10位以内
+        */ 
+        var $input = document.querySelector("#QQ");
+        var $button = document.querySelector("button");
+       $button.onclick=function(){
+       		if(10<$input.value.length||$input.value.length<5){
+       			alert('输入的数字必须在5位以上、10位以内');
+       		}
+       		else if($input.value.charAt(0)==0){
+       			alert('第一个数不能为零');  
+       		}
+       		else if(isNaN($input.value)||$input.value.indexOf('.')>-1){
+       			alert('只能时是纯数字');
+       		}      	
+       		else{
+       			alert("正在登陆!请稍后");	
+       		}
+       		
+       /*	for(var j=0;j<1;j++){
+       		if(!$input.value){
+       		alert('没有输入不能登陆');
+       		break;
+       		}
+       		if(10<$input.value.length||$input.value.length<5){
+       		alert('输入的数字必须在5位以上、10位以内');
+       		break;
+       		}
+       		if($input.value.charCodeAt(0)==48){
+       			alert('第一个数不能为零');       			
+       			break;
+       		}
+       		var length = $input.value.length;      		
+       		for(var i=0;i< length;i++){      			
+       			if(57<$input.value.charCodeAt(i)||$input.value.charCodeAt(i)<48){
+       				if($input.value.charCodeAt(i)==46){
+       				alert('不能输入小数');
+       				break;
+       				}
+       				alert('只能输入数字');
+       				break;
+       			}       			      		      		
+       		}
+       		if(57<$input.value.charCodeAt(i)||$input.value.charCodeAt(i)<48||$input.value.charCodeAt(i)==46){
+       			break;
+       		}
+       		alert("正在登陆!请稍后");		
+       	}     */
+	
+      }
+		</script>
+	</body>
+</html>
