@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{font-size:100px;
+			background:orange;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+					
+					function getRandomColor(){
+			 		var str = "0123456789abcdef";  
+			 		 var str1 = ["#"]; 
+				    for(i = 0;i < 6;i++){  
+				    	var num =Math.round(Math.random()*15);
+				        str1.push(str.substring(num,num+1));
+				    }  
+				    return str1.join("");
+				   }
+					function getRandomFont(){
+			 		var str = "123456789";  
+			 		 var str2 = ['p','x']; 
+				    for(i = 0;i < 2;i++){  
+				    	var num =Math.round(Math.random()*9);
+				        str2.unshift(str.substring(num,num+1));
+				        
+				    }  
+				    return str2.join("");
+				   }
+					function getRandomBackgroundColor(){
+			 		var str = "0123456789abcdef";  
+			 		 var str3 = ["#"]; 
+				    for(i = 0;i < 6;i++){  
+				    	var num =Math.round(Math.random()*15);
+				        str3.push(str.substring(num,num+1));
+				    }  
+				    return str3.join("");
+				   }
+					function get(){
+						var $body = document.getElementsByTagName('body');
+						$body[0].style.color=getRandomColor();
+				    	$body[0].style.fontSize=getRandomFont();
+				    	$body[0].style.backgroundColor=getRandomBackgroundColor();
+				    	console.log(getRandomFont());
+				    	console.log(getRandomColor());
+					}
+					//setInterval('get()',200);
+		</script>
+		
+		这首歌唱给你听
+		这首歌唱给你听
+		这首歌唱给你听
+		这首歌唱给你听
+	</body>
+</html>
