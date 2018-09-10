@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var arr = [1,2,3,4,5,6,7,8,9,10];
+			/*arr.fill(1);//全部填充成1 不改变数组本身长度*/
+			
+			/*arr.reverse();//内容颠倒*/
+			
+			/*arr.sort();//按照Ascllma来排序*/
+			
+			/*arr.sort(function(a,b){//高阶函数，按照数字来排序
+				return b-a;
+			})*/
+			
+			/*var obj=arr.map(function(a){//高阶函数，通过map来改变元素本身的大小；
+				return a*2;
+			})
+			console.log(obj);*/
+			
+			/*var obj = arr.filter(function(a){//过滤器 a<5 true 返回符合条件的元素
+				return a<5;
+			})
+			console.log(obj);*/
+			
+			var obj =arr.forEach(function(item,index,arr){
+				//item是当前元素，index是当前元素的索引，arr循环数组里所有元素；
+				console.log('item'+item+'index'+index+'arr'+arr);
+			})
+			
+			/*var a = arr.join('|');//把数组的内容拼接成字符串
+			console.log(a);*/
+			
+			/*var arr1= new Array(10);//连接数组，不会改变数组本身；
+			arr1.fill(1);
+			var a = arr.concat(arr1);
+			console.log(a);*/
+//			console.log(arr);
+		</script>
+	</body>
+</html>
