@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			fn([1,2,3,1,1,5,4,2,6]);
+			/*function fn(arr){//方法一
+				var arr1=[];
+				for(var i=0;i<arr.length;i++){
+					for(var j=0;j<arr1.length;j++){
+						if(arr1[j]===arr[i]){
+							break;
+						}						
+					}
+					if(arr1[j]===arr[i]){
+						continue;
+					}		
+					arr1.push(arr[i]);
+				}
+				return console.log(arr1);
+			}*/
+			
+			/*function fn(arr){//方法二
+				var arr1=[];
+				for(var i=0;i<arr.length;i++){
+					if(arr1.indexOf(arr[i])==-1){
+					arr1.push(arr[i]);
+				}
+				}return console.log(arr1);
+			}
+			*/
+			function fn(arr){//方法三
+				var arr1=[];
+				for(var i=0;i<arr.length;i++){
+					if(!arr1[arr[i]]){
+					arr1.push(arr[i]);
+				}
+				}return console.log(arr1);
+			}
+		</script>
+	</body>
+</html>
