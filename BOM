@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>	
+		<!-- <iframe src="http://www.baidu.com"style="height:500px;width:800px;"></iframe> -->
+		<script type="text/javascript">
+//			 console.log(window.screen);			  
+        var arr = [];
+        for(var i = 0; i < 5; i++) {
+            // 给数组添加函数元素
+            arr[i] = function() {
+                console.log(i);
+            }
+        }
+        
+    console.log(arr[0]())
+        arr[1]();
+        arr[4]();
+
+		</script>
+	</body>
+</html>
